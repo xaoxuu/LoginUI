@@ -24,7 +24,7 @@ public struct LoginUI {
     
     public static var accountTitle = "账号"
     public static var accountPlaceholder = "请输入邮箱地址"
-    public static var accountDefault = ""
+    public static var accountDefault: String?
     public static var passwordTitle = "密码"
     public static var passwordPlaceholder = "请输入密码"
     public static var repeatPlaceholder = "请再次输入密码"
