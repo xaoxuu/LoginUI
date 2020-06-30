@@ -40,6 +40,8 @@ public struct LoginUI {
     
     internal static var callbacks = [Event.Key: Any]()
     
+    internal static var current: LoginVC?
+    
     public struct Event {
         public typealias Key = String
         public typealias Login = (String, String) -> Void
@@ -83,6 +85,17 @@ public struct LoginUI {
         if let cb = LoginUI.callbacks[.lockButtons] as? () -> Void {
             cb()
         }
+    }
+    
+    public static func present(from vc: UIViewController) {
+        current = LoginVC()
+        vc.present(current!, animated: true, completion: nil)
+    }
+    
+    public static func dismiss() {
+        current?.dismiss(animated: true, completion: {
+            current = nil
+        })
     }
     
 }

@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        LoginUI.logo = UIImage(named: "logo")
+//        LoginUI.logo = UIImage(named: "logo")
+        LoginUI.logo = UIImage(systemName: "icloud")
         LoginUI.title = "LoginUI"
         LoginUI.agreementURL = URL(string: "https://xaoxuu.com")
         LoginUI.dismissIcon = UIImage(named: "prohud.xmark")

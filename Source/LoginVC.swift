@@ -152,6 +152,7 @@ private extension LoginVC {
         logo.image = LoginUI.logo
         logo.layer.cornerRadius = 0.5*logo.frame.size.width
         view.addSubview(logo)
+        logo.contentMode = .scaleAspectFit
         logo.snp.remakeConstraints { (make) in
             make.width.height.equalTo(96)
             make.centerX.equalTo(self.view)
