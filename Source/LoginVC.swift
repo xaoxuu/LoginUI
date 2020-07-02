@@ -153,8 +153,13 @@ private extension LoginVC {
         }
     }
     func setupBackground(){
-        view.backgroundColor = .white
-        view.tintColor = UIColor.accent
+        if #available(iOS 13, *) {
+            view.backgroundColor = .systemBackground
+            view.tintColor = UIColor.accent
+        } else {
+            view.backgroundColor = .white
+            view.tintColor = UIColor.accent
+        }
     }
     func setupSubviews(){
         // LOGO
@@ -177,8 +182,11 @@ private extension LoginVC {
             make.top.equalTo(logo.snp.bottom).offset(LoginUI.padding)
         }
         
-        
-        inputArea.backgroundColor = UIColor.init(white: 0.95, alpha: 1)
+        if #available(iOS 13, *) {
+            inputArea.backgroundColor = .secondarySystemBackground
+        } else {
+            inputArea.backgroundColor = UIColor.init(white: 0.95, alpha: 1)
+        }
         inputArea.layer.cornerRadius = LoginUI.cornerRadius
         view.addSubview(inputArea)
         
@@ -209,9 +217,13 @@ private extension LoginVC {
         
         setup(btn: loginBtn)
         loginBtn.backgroundColor = view.tintColor
-        loginBtn.setTitleColor(.white, for: .normal)
+        if #available(iOS 13, *) {
+            loginBtn.setTitleColor(.systemBackground, for: .normal)
+        } else {
+            loginBtn.setTitleColor(.white, for: .normal)
+        }
         loginBtn.layer.cornerRadius = LoginUI.cornerRadius
-        loginBtn.titleLabel?.font = UIFont.bold(15)
+        loginBtn.titleLabel?.font = UIFont.bold(17)
         view.addSubview(loginBtn)
         loginBtn.snp.makeConstraints { (make) in
             make.top.equalTo(inputArea.snp.bottom).offset(LoginUI.margin)
