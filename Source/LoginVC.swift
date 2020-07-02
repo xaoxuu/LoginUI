@@ -121,7 +121,7 @@ public class LoginVC: UIViewController {
         onEditing(false)
     }
     
-    public func didDismiss(_ callback: LoginUI.Event) {
+    public func onDismiss(callback: @escaping LoginUI.Event.Dismiss) {
         LoginUI.callbacks[.onDismiss] = callback
     }
     
