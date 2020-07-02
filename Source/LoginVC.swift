@@ -121,6 +121,15 @@ public class LoginVC: UIViewController {
         onEditing(false)
     }
     
+    public func didDismiss(_ callback: LoginUI.Event) {
+        LoginUI.callbacks[.onDismiss] = callback
+    }
+    
+    public override func viewDidDisappear(_ animated: Bool) {
+        if let cb = LoginUI.callbacks[.onDismiss] as? LoginUI.Event.Dismiss {
+            cb()
+        }
+    }
     
 }
 

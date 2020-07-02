@@ -48,6 +48,7 @@ public struct LoginUI {
         public typealias Signup = (String, String) -> Void
         public typealias ForgotPassword = (String) -> Void
         public typealias PasswordInconsistent = () -> Void
+        public typealias Dismiss = () -> Void
     }
     
     /// 点击了登录
@@ -87,9 +88,11 @@ public struct LoginUI {
         }
     }
     
-    public static func present(from vc: UIViewController) {
+    @discardableResult
+    public static func present(from vc: UIViewController) -> LoginVC {
         current = LoginVC()
         vc.present(current!, animated: true, completion: nil)
+        return current!
     }
     
     public static func dismiss() {
@@ -112,6 +115,9 @@ internal extension LoginUI.Event.Key {
     }
     static var onPasswordInconsistent: LoginUI.Event.Key {
         return "onPasswordInconsistent"
+    }
+    static var onDismiss: LoginUI.Event.Key {
+        return "onDismiss"
     }
     static var lockButtons: LoginUI.Event.Key {
         return "lockButtons"
