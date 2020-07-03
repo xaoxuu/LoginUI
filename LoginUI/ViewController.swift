@@ -56,11 +56,23 @@ class ViewController: UIViewController {
             }
         }
         
+        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+            LoginUI.navTo(.signup)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+4) {
+            LoginUI.navTo(.reset)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+6) {
+            LoginUI.navTo(.signup)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+8) {
+            LoginUI.navTo(.login)
+        }
+        
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let vc = LoginVC()
-        present(vc, animated: true, completion: nil)
+        LoginUI.present(from: self)
     }
 
 }

@@ -11,6 +11,11 @@ import Inspire
 
 public struct LoginUI {
     
+    public enum Page: Int{
+        case login = 1  // 登录
+        case signup = 2 // 注册
+        case reset = 3  // 重置密码
+    }
     public static var dismissIcon: UIImage?
     public static var logo: UIImage?
     public static var title = ""
@@ -101,6 +106,10 @@ public struct LoginUI {
         current?.dismiss(animated: true, completion: {
             current = nil
         })
+    }
+    
+    public static func navTo(_ page: Page) {
+        current?.mode = page
     }
     
 }

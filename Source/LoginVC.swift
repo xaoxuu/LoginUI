@@ -10,18 +10,13 @@ import UIKit
 
 public class LoginVC: UIViewController {
     
-    public enum Mode: Int{
-        case login = 1
-        case signup = 2
-        case reset = 3
-    }
-    var mode = Mode.login {
+    var mode = LoginUI.Page.login {
         didSet{
             switch mode {
             case .login:
-                loginBtn.tag = Mode.login.rawValue
-                signupBtn.tag = Mode.signup.rawValue
-                resetBtn.tag = Mode.reset.rawValue
+                loginBtn.tag = LoginUI.Page.login.rawValue
+                signupBtn.tag = LoginUI.Page.signup.rawValue
+                resetBtn.tag = LoginUI.Page.reset.rawValue
                 loginBtn.setTitle(LoginUI.loginTitle, for: .normal)
                 signupBtn.setTitle(LoginUI.signupTitle, for: .normal)
                 resetBtn.setTitle(LoginUI.resetTitle, for: .normal)
@@ -39,9 +34,9 @@ public class LoginVC: UIViewController {
                 tf2.placeholder = LoginUI.passwordPlaceholder
                 tf2.returnKeyType = .done
             case .signup:
-                loginBtn.tag = Mode.signup.rawValue
-                signupBtn.tag = Mode.login.rawValue
-                resetBtn.tag = Mode.reset.rawValue
+                loginBtn.tag = LoginUI.Page.signup.rawValue
+                signupBtn.tag = LoginUI.Page.login.rawValue
+                resetBtn.tag = LoginUI.Page.reset.rawValue
                 loginBtn.setTitle(LoginUI.signupTitle, for: .normal)
                 signupBtn.setTitle(LoginUI.loginTitle, for: .normal)
                 resetBtn.setTitle(LoginUI.resetTitle, for: .normal)
@@ -53,9 +48,9 @@ public class LoginVC: UIViewController {
                 tf1.returnKeyType = .next
                 tf2.returnKeyType = .next
             case .reset:
-                loginBtn.tag = Mode.reset.rawValue
-                signupBtn.tag = Mode.signup.rawValue
-                resetBtn.tag = Mode.login.rawValue
+                loginBtn.tag = LoginUI.Page.reset.rawValue
+                signupBtn.tag = LoginUI.Page.signup.rawValue
+                resetBtn.tag = LoginUI.Page.login.rawValue
                 loginBtn.setTitle(LoginUI.okTitle, for: .normal)
                 signupBtn.setTitle(LoginUI.signupTitle, for: .normal)
                 resetBtn.setTitle(LoginUI.cancelTitle, for: .normal)
@@ -231,7 +226,7 @@ private extension LoginVC {
             make.left.right.equalTo(inputArea)
             make.height.equalTo(50)
         }
-        loginBtn.tag = Mode.login.rawValue
+        loginBtn.tag = LoginUI.Page.login.rawValue
         
         setup(btn: resetBtn)
         resetBtn.titleLabel?.font = UIFont.regular(14)
@@ -240,7 +235,7 @@ private extension LoginVC {
             make.top.equalTo(loginBtn.snp.bottom).offset(LoginUI.margin)
             make.left.equalTo(loginBtn)
         }
-        resetBtn.tag = Mode.reset.rawValue
+        resetBtn.tag = LoginUI.Page.reset.rawValue
         
         setup(btn: signupBtn)
         signupBtn.titleLabel?.font = UIFont.regular(14)
@@ -249,7 +244,7 @@ private extension LoginVC {
             make.top.equalTo(loginBtn.snp.bottom).offset(LoginUI.margin)
             make.right.equalTo(loginBtn.snp.right)
         }
-        signupBtn.tag = Mode.signup.rawValue
+        signupBtn.tag = LoginUI.Page.signup.rawValue
         
         
         let footerArea = UIView()
@@ -409,9 +404,9 @@ private extension LoginVC {
             }
             
         } else if sender == resetBtn {
-            mode = Mode.init(rawValue: sender.tag) ?? .reset
+            mode = LoginUI.Page.init(rawValue: sender.tag) ?? .reset
         } else if sender == signupBtn {
-            mode = Mode.init(rawValue: sender.tag) ?? .signup
+            mode = LoginUI.Page.init(rawValue: sender.tag) ?? .signup
         } else if sender == footerBtn {
             if let url = LoginUI.agreementURL, UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
