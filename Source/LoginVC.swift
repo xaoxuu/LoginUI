@@ -194,6 +194,7 @@ private extension LoginVC {
         inputArea.addSubview(tf1)
         tf1.returnKeyType = .next
         tf1.isSecureTextEntry = false
+        tf1.keyboardType = LoginUI.accountType
         inputArea.addSubview(tf2)
         inputArea.addSubview(tf3)
         setup(tf: tf1)

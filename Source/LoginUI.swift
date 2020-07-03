@@ -38,6 +38,8 @@ public struct LoginUI {
     public static var padding = CGFloat(16)
     public static var cornerRadius = CGFloat(12)
     
+    public static var accountType = UIKeyboardType.emailAddress
+    
     internal static var callbacks = [Event.Key: Any]()
     
     internal static var current: LoginVC?
