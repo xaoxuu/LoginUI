@@ -366,7 +366,6 @@ private extension LoginVC {
                         }
                     }
                 }
-                
             } else if mode == .signup {
                 if tf1.text!.count == 0 {
                     tf1.becomeFirstResponder()
@@ -394,19 +393,21 @@ private extension LoginVC {
                         tf2.becomeFirstResponder()
                     }
                 }
-                
             } else if mode == .reset {
+                view.endEditing(true)
+                onEditing(false)
                 if let email = tf1.text {
                     if let f = LoginUI.callbacks["onTappedForgotPassword"] as? LoginUI.Event.ForgotPassword {
                         f(email)
                     }
                 }
             }
-            
         } else if sender == resetBtn {
             mode = LoginUI.Page.init(rawValue: sender.tag) ?? .reset
+            tf1.becomeFirstResponder()
         } else if sender == signupBtn {
             mode = LoginUI.Page.init(rawValue: sender.tag) ?? .signup
+            tf1.becomeFirstResponder()
         } else if sender == footerBtn {
             if let url = LoginUI.agreementURL, UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
